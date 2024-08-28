@@ -1,0 +1,649 @@
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="/vazir-font-v18.0.0/font.css">
+
+    <style>
+        .bmain {
+            border: solid 1px rgb(121, 121, 121);
+            margin: 5px;
+            border-radius: 5px;
+        }
+
+        div {
+            padding: 3px;
+        }
+
+        body {
+            font-family: Vazir;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="row bmain">
+
+        <div class="col-4" style="border-right: solid 1px rgb(121, 121, 121) ;">
+            <div style="border-bottom: solid 1px rgb(121, 121, 121);text-align: right;">
+                تاریخ : @PersianDate.ToPersianDate(ViewBag.data.CreateDateTime)
+            </div>
+            <div style="text-align: right;"> :شماره </div>
+        </div>
+        <div class="col-4" style="border-right: solid 1px rgb(121, 121, 121) ;">
+            <h4 class="text-center mt-3">فرم پرسشنامه استخدام</h3>
+        </div>
+        <div class="col-4 text-center">
+            <img src="/assets/img/logo.jpg.png" alt="">
+        </div>
+
+    </div>
+
+
+    <div class="row bmain" dir="rtl">
+
+        <div class="col-4" style="border-left: solid 1px rgb(121, 121, 121) ; text-align: right;">
+            عنوان شغلی مورد تقاضا : <b>@ViewBag.data.wishedJob</b>
+        </div>
+        <div class="col-8" style="border-left: solid 1px rgb(121, 121, 121) ; text-align: right;">
+            نحوه آشنایی: <b>@ViewBag.data.howFind</b>
+        </div>
+    </div>
+    <div class="row bmain" dir="rtl">
+
+        <div class="col-1"
+            style="border-left: solid 1px rgb(121, 121, 121) ;background-color:rgb(121, 121, 121) ; writing-mode: vertical-lr;padding-top:50px;padding-bottom: 50px;text-align: center;padding-left: 30px;">
+            <b style="color:black"> مشحصات عمومی</b>
+        </div>
+        <div class="col-11" style="text-align: right;">
+
+            <div class="row" style="border-bottom: solid 1px rgb(121, 121, 121) ;">
+                <div class="col-4" style="border-left: solid 1px rgb(121, 121, 121) ;">
+                    نام و نام خانوادگی : <b>@ViewBag.data.FirstName @ViewBag.data.LastName</b>
+                </div>
+                <div class="col-3" style="border-left: solid 1px rgb(121, 121, 121) ;">
+                    نام پدر : <b>@ViewBag.data.FatherName</b>
+                </div>
+                <div class="col-3" style="border-left: solid 1px rgb(121, 121, 121) ;">
+                    شماره ملی : <b>@ViewBag.data.CodeMeli</b>
+                </div>
+                <div class="col-2">
+                    محل صدور: <b>@ViewBag.data.MahaleSodor</b>
+                </div>
+
+            </div>
+
+
+            <div class="row" style="border-bottom: solid 1px rgb(121, 121, 121) ;">
+                <div class="col-4" style="border-left: solid 1px rgb(121, 121, 121) ; text-align: right;">
+                    تاریخ تولد : <b>@ViewBag.data.BirthDay</b>
+                </div>
+                <div class="col-4" style="border-left: solid 1px rgb(121, 121, 121) ;">
+                    ملیت : <b>@ViewBag.data.Meliat</b>
+                </div>
+                <div class="col-4">
+                    دین : <b>@ViewBag.data.Din</b>
+                </div>
+
+
+            </div>
+
+            <div class="row" style="border-bottom: solid 1px rgb(121, 121, 121) ;">
+                <div class="col-3" style="border-left: solid 1px rgb(121, 121, 121) ; text-align: right;">
+                    وضعیت تاهل : @{
+                        if (ViewBag.data.isSingle == true)
+                        {
+                            <b>مجرد</b>
+                        }
+                        else
+                        {
+                            <b>متاهل</b>
+                        }
+                    }
+                </div>
+                <div class="col-3" style="border-left: solid 1px rgb(121, 121, 121) ;">
+                    تعداد افراد تحت تفکل : <b>@ViewBag.data.AfradTafakol</b>
+                </div>
+                <div class="col-3" style="border-left: solid 1px rgb(121, 121, 121) ;">
+                    تعداد فرزند : <b>@ViewBag.data.ChildNum</b>
+                </div>
+                <div class="col-3">
+                    مصرف دخانیات : @{
+                        if (ViewBag.data.isTobacco == true)
+                        {
+                            <b>دارم</b>
+                        }
+                        else
+                        {
+                            <b>ندارم</b>
+                        }
+                    }
+                </div>
+
+
+            </div>
+
+
+            <div class="row" style="border-bottom: solid 1px rgb(121, 121, 121) ;">
+                <div class="col-6" style="border-left: solid 1px rgb(121, 121, 121) ; text-align: right;">
+                    گواهینامه خودرو : @{
+                        if (ViewBag.data.GovahiRanandegi == true)
+                        {
+                            <b>دارم</b>
+                        }
+                        else
+                        {
+                            <b>ندارم</b>
+                        }
+                    }
+                </div>
+                <div class="col-6">
+                    نظام وظیفه : <b>@ViewBag.data.Sarbazi</b>
+                </div>
+
+            </div>
+
+            <div class="row" style="border-bottom: solid 1px rgb(121, 121, 121) ;">
+                <div class="col-4" style="border-left: solid 1px rgb(121, 121, 121) ; text-align: right;">
+                    گواهینامه موتور :
+                </div>
+                <div class="col-4" style="border-left: solid 1px rgb(121, 121, 121) ;">
+                    شماره ثابت : <b>@ViewBag.data.phoneSabet</b>
+                </div>
+                <div class="col-4">
+                    شماره تلفن همراه : <b>@ViewBag.data.phone</b>
+                </div>
+
+            </div>
+
+            <div class="row" style="border-bottom: solid 1px rgb(121, 121, 121) ;">
+                <div class="col-6" style="border-left: solid 1px rgb(121, 121, 121) ; text-align: right;">
+                    شماره تماس اضطراری / نسبت : <b> @ViewBag.data.phoneSos</b>
+                </div>
+                <div class="col-6">
+                    ایمیل : <b>@ViewBag.data.Email</b>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    آدرس محل سکونت : <b>@ViewBag.data.Address</b>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+
+    <div class="row bmain" dir="rtl">
+
+        <div class="col-1"
+            style="border-left: solid 1px rgb(121, 121, 121) ;background-color:rgb(121, 121, 121) ; writing-mode: vertical-lr;padding-top:50px;padding-bottom: 50px;text-align: center;padding-left: 30px;">
+            <b style="color:black"> بستگان و آشنایان</b>
+        </div>
+        <div class="col-11" style="text-align: right; ">
+
+            <div class="row"
+                style="border-bottom: solid 1px rgb(121, 121, 121) ; text-align: center; background-color: grey;">
+                <div class="col-6" style="border-left: solid 1px rgb(121, 121, 121) ; ">
+                    <b>مشخصات بستگان درجه 1</b>
+                </div>
+                <div class="col-6" style="border-left: solid 2px rgb(121, 121, 121) ;">
+                    <b>آشنایان (غیر فامیل)</b>
+                </div>
+            </div>
+            <div class="row"
+                style="border-bottom: solid 2px rgb(121, 121, 121) ; text-align: center; background-color: darkgrey;">
+                <div class="col-2" style="border-left: solid 1px rgb(121, 121, 121) ; ">
+                    <span>نام کامل</span>
+                </div>
+                <div class="col-1" style="border-left: solid 1px rgb(121, 121, 121) ;">
+                    نسبت
+                </div>
+                <div class="col-1" style="border-left: solid 1px rgb(121, 121, 121) ; ">
+                    شغل
+                </div>
+                <div class="col-2" style="border-left: solid 2px rgb(121, 121, 121) ;">
+                    تحصیلات
+                </div>
+                <div class="col-2" style="border-left: solid 1px rgb(121, 121, 121) ; ">
+                    نام کامل
+                </div>
+                <div class="col-1" style="border-left: solid 1px rgb(121, 121, 121) ;">
+                    نسبت
+                </div>
+                <div class="col-1" style="border-left: solid 1px rgb(121, 121, 121) ;">
+                    شغل
+                </div>
+                <div class="col-2" style="border-left: solid 1px rgb(121, 121, 121) ;">
+                    شماره تماس
+                </div>
+            </div>
+            <div class="row" style="border-bottom: solid 1px rgb(121, 121, 121) ; text-align: center;">
+                <div class="col-2" style="border-left: solid 1px rgb(121, 121, 121) ; ">
+                    @ViewBag.data.FatherFullName
+                </div>
+                <div class="col-1" style="border-left: solid 1px rgb(121, 121, 121) ;">
+                    پدر
+                </div>
+                <div class="col-1" style="border-left: solid 1px rgb(121, 121, 121) ; ">
+                    @ViewBag.data.FatherJob
+                </div>
+                <div class="col-2" style="border-left: solid 2px rgb(121, 121, 121) ;">
+                    @ViewBag.data.FatherStudy
+                </div>
+                <div class="col-2" style="border-left: solid 1px rgb(121, 121, 121) ; ">
+                    @ViewBag.data.friendFullName
+                </div>
+                <div class="col-1" style="border-left: solid 1px rgb(121, 121, 121) ;">
+                    @ViewBag.data.friendRel
+                </div>
+                <div class="col-1" style="border-left: solid 1px rgb(121, 121, 121) ;">
+                    @ViewBag.data.friendJob
+                </div>
+                <div class="col-2" style="border-left: solid 1px rgb(121, 121, 121) ;">
+                    @ViewBag.data.friendPhone
+                </div>
+            </div>
+            <div class="row" style="border-bottom: solid 1px rgb(121, 121, 121) ; text-align: center;">
+                <div class="col-2" style="border-left: solid 1px rgb(121, 121, 121) ; ">
+                    @ViewBag.data.MotherFullName
+                </div>
+                <div class="col-1" style="border-left: solid 1px rgb(121, 121, 121) ;">
+                    مادر
+                </div>
+                <div class="col-1" style="border-left: solid 1px rgb(121, 121, 121) ; ">
+                    @ViewBag.data.MoterJob
+                </div>
+                <div class="col-2" style="border-left: solid 2px rgb(121, 121, 121) ;">
+                    @ViewBag.data.MotherStudy
+                </div>
+                <div class="col-2" style="border-left: solid 1px rgb(121, 121, 121) ; ">
+
+                </div>
+                <div class="col-1" style="border-left: solid 1px rgb(121, 121, 121) ;">
+
+                </div>
+                <div class="col-1" style="border-left: solid 1px rgb(121, 121, 121) ;">
+
+                </div>
+                <div class="col-2" style="border-left: solid 1px rgb(121, 121, 121) ;">
+
+                </div>
+            </div>
+            <div class="row" style="text-align: center;">
+                <div class="col-2" style="border-left: solid 1px rgb(121, 121, 121) ; ">
+                    @ViewBag.data.rel1Fullname.
+                </div>
+                <div class="col-1" style="border-left: solid 1px rgb(121, 121, 121) ;">
+                    @ViewBag.data.rel1Rel.
+                </div>
+                <div class="col-1" style="border-left: solid 1px rgb(121, 121, 121) ; ">
+                    @ViewBag.data.rel1Job.
+                </div>
+                <div class="col-2" style="border-left: solid 2px rgb(121, 121, 121) ;">
+                    @ViewBag.data.rel1Study.
+                </div>
+                <div class="col-2" style="border-left: solid 1px rgb(121, 121, 121) ; ">
+
+                </div>
+                <div class="col-1" style="border-left: solid 1px rgb(121, 121, 121) ;">
+
+                </div>
+                <div class="col-1" style="border-left: solid 1px rgb(121, 121, 121) ;">
+
+                </div>
+                <div class="col-2" style="border-left: solid 1px rgb(121, 121, 121) ;">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row bmain" dir="rtl">
+
+        <div class="col-1"
+            style="border-left: solid 1px rgb(121, 121, 121) ;background-color:rgb(121, 121, 121) ; writing-mode: vertical-lr;padding-top:50px;padding-bottom: 50px;text-align: center;padding-left: 30px;">
+            <b style="color:black"> سوابق تحصیلی</b>
+        </div>
+        <div class="col-11" style="text-align: right; ">
+
+            <div class="row"
+                style="border-bottom: solid 1px rgb(121, 121, 121) ; text-align: center; background-color: grey;">
+                <div class="col-3" style="border-left: solid 1px rgb(121, 121, 121) ; ">
+                    <b>رشته / گرایش تحصیل</b>
+                </div>
+                <div class="col-3" style="border-left: solid 2px rgb(121, 121, 121) ;">
+                    <b>مقطع تحصیلی</b>
+                </div>
+                <div class="col-3" style="border-left: solid 1px rgb(121, 121, 121) ; ">
+                    <b>محل تحصیل</b>
+                </div>
+                <div class="col-3" style="border-left: solid 2px rgb(121, 121, 121) ;">
+                    <b>معدل</b>
+                </div>
+            </div>
+
+            <div class="row" style="border-bottom: solid 1px rgb(121, 121, 121) ; text-align: center;">
+                <div class="col-3" style="border-left: solid 1px rgb(121, 121, 121) ; ">
+                    <b>@ViewBag.data.studyHistory</b>
+                </div>
+                <div class="col-3" style="border-left: solid 2px rgb(121, 121, 121) ;">
+                    <b>@ViewBag.data.studylvl</b>
+                </div>
+                <div class="col-3" style="border-left: solid 1px rgb(121, 121, 121) ; ">
+                    <b>@ViewBag.data.studyScholl</b>
+                </div>
+                <div class="col-3" style="border-left: solid 2px rgb(121, 121, 121) ;">
+                    <b>@ViewBag.data.studyScore</b>
+                </div>
+            </div>
+            <div class="row" style="border-bottom: solid 1px rgb(121, 121, 121) ; text-align: center;">
+                <div class="col-3" style="border-left: solid 1px rgb(121, 121, 121) ; ">
+                    <b>@ViewBag.data.study2History</b>.
+                </div>
+                <div class="col-3" style="border-left: solid 2px rgb(121, 121, 121) ;">
+                    <b>@ViewBag.data.study2lvl</b>.
+                </div>
+                <div class="col-3" style="border-left: solid 1px rgb(121, 121, 121) ; ">
+                    <b>@ViewBag.data.study2Scholl</b>.
+                </div>
+                <div class="col-3" style="border-left: solid 2px rgb(121, 121, 121) ;">
+                    <b>@ViewBag.data.study2Score</b>.
+                </div>
+            </div>
+            <div class="row" style="border-bottom: solid 1px rgb(121, 121, 121) ; text-align: center;">
+                <div class="col-3" style="border-left: solid 1px rgb(121, 121, 121) ; ">
+                    .
+                </div>
+                <div class="col-3" style="border-left: solid 2px rgb(121, 121, 121) ;">
+                    .
+                </div>
+                <div class="col-3" style="border-left: solid 1px rgb(121, 121, 121) ; ">
+                    .
+                </div>
+                <div class="col-3" style="border-left: solid 2px rgb(121, 121, 121) ;">
+                    .
+                </div>
+            </div>
+            <div class="row" style="border-bottom: solid 1px rgb(121, 121, 121) ; text-align: center;">
+                <div class="col-3" style="border-left: solid 1px rgb(121, 121, 121) ; ">
+                    .
+                </div>
+                <div class="col-3" style="border-left: solid 2px rgb(121, 121, 121) ;">
+                    .
+                </div>
+                <div class="col-3" style="border-left: solid 1px rgb(121, 121, 121) ; ">
+                    .
+                </div>
+                <div class="col-3" style="border-left: solid 2px rgb(121, 121, 121) ;">
+                    <b>.</b>
+                </div>
+            </div>
+            <div class="col-12">
+                <p>آیا همچنان مشغول به تحصیل هستید ؟ @{
+                        if (ViewBag.data.isStuding == true)                        {
+                            <b>بله</b>
+                        }                        else                        {
+                            <b>خیر</b>
+                        }
+                    }
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="row bmain" dir="rtl">
+
+        <div class="col-1"
+            style="border-left: solid 1px rgb(121, 121, 121) ;background-color:rgb(121, 121, 121) ; writing-mode: vertical-lr;padding-top:50px;padding-bottom: 50px;text-align: center;padding-left: 30px;">
+            <b style="color:black"> سوابق آموزشی / مهارتی</b>
+        </div>
+        <div class="col-11" style="text-align: right; ">
+
+            <div class="row"
+                style="border-bottom: solid 1px rgb(121, 121, 121) ; text-align: center; background-color: grey;">
+                <div class="col-6" style="border-left: solid 1px rgb(121, 121, 121) ; ">
+                    <b>دوره های تخصصی و عمومی</b>
+                </div>
+                <div class="col-6" style="border-left: solid 2px rgb(121, 121, 121) ;">
+                    <b>آشنایی با زبان های خارجه</b>
+                </div>
+            </div>
+            <div class="row"
+                style="border-bottom: solid 2px rgb(121, 121, 121) ; text-align: center; background-color: darkgrey;">
+                <div class="col-2" style="border-left: solid 1px rgb(121, 121, 121) ; ">
+                    <span>عنوان دوره</span>
+                </div>
+                <div class="col-1" style="border-left: solid 1px rgb(121, 121, 121) ;">
+                    مدت دوره
+                </div>
+                <div class="col-1" style="border-left: solid 1px rgb(121, 121, 121) ; ">
+                    محل برگزاری
+                </div>
+                <div class="col-2" style="border-left: solid 2px rgb(121, 121, 121) ;">
+                    گواهینامه
+                </div>
+                <div class="col-2" style="border-left: solid 1px rgb(121, 121, 121) ; ">
+                    زبان
+                </div>
+                <div class="col-1" style="border-left: solid 1px rgb(121, 121, 121) ;">
+                    مکالمه
+                </div>
+                <div class="col-1" style="border-left: solid 1px rgb(121, 121, 121) ;">
+                    نگارش
+                </div>
+                <div class="col-2" style="border-left: solid 1px rgb(121, 121, 121) ;">
+                    درک مطلب
+                </div>
+            </div>
+            <div class="row" style="border-bottom: solid 1px rgb(121, 121, 121) ; text-align: center;">
+                <div class="col-2" style="border-left: solid 1px rgb(121, 121, 121) ; ">
+                    @ViewBag.data.corse1Name
+                </div>
+                <div class="col-1" style="border-left: solid 1px rgb(121, 121, 121) ;">
+                    @ViewBag.data.corse1Time
+                </div>
+                <div class="col-1" style="border-left: solid 1px rgb(121, 121, 121) ; ">
+
+                </div>
+                <div class="col-2" style="border-left: solid 2px rgb(121, 121, 121) ;">
+
+                </div>
+                <div class="col-2" style="border-left: solid 1px rgb(121, 121, 121) ; ">
+                    انگلیسی
+                </div>
+                <div class="col-1" style="border-left: solid 1px rgb(121, 121, 121) ;">
+                    @ViewBag.data.englishConv
+                </div>
+                <div class="col-1" style="border-left: solid 1px rgb(121, 121, 121) ;">
+                    @ViewBag.data.englishWrite
+                </div>
+                <div class="col-2" style="border-left: solid 1px rgb(121, 121, 121) ;">
+                    @ViewBag.data.englishUndrestand
+                </div>
+            </div>
+            <div class="row" style="border-bottom: solid 1px rgb(121, 121, 121) ; text-align: center;">
+                <div class="col-2" style="border-left: solid 1px rgb(121, 121, 121) ; ">
+                    @ViewBag.data.corse2Name
+                </div>
+                <div class="col-1" style="border-left: solid 1px rgb(121, 121, 121) ;">
+                    @ViewBag.data.corse2Time
+                </div>
+                <div class="col-1" style="border-left: solid 1px rgb(121, 121, 121) ; ">
+
+                </div>
+                <div class="col-2" style="border-left: solid 2px rgb(121, 121, 121) ;">
+
+                </div>
+                <div class="col-2" style="border-left: solid 1px rgb(121, 121, 121) ; ">
+                    @ViewBag.data.langName
+                </div>
+                <div class="col-1" style="border-left: solid 1px rgb(121, 121, 121) ;">
+                    @ViewBag.data.LangConv
+                </div>
+                <div class="col-1" style="border-left: solid 1px rgb(121, 121, 121) ;">
+                    @ViewBag.data.langWrite
+                </div>
+                <div class="col-2" style="border-left: solid 1px rgb(121, 121, 121) ;">
+                    @ViewBag.data.langUnderstand
+                </div>
+            </div>
+            <div class="row" style="text-align: center;">
+                <div class="col-2" style="border-left: solid 1px rgb(121, 121, 121) ; ">
+                    .
+                </div>
+                <div class="col-1" style="border-left: solid 1px rgb(121, 121, 121) ;">
+                    
+                </div>
+                <div class="col-1" style="border-left: solid 1px rgb(121, 121, 121) ; ">
+                  
+                </div>
+                <div class="col-2" style="border-left: solid 2px rgb(121, 121, 121) ;">
+                   
+                </div>
+                <div class="col-2" style="border-left: solid 1px rgb(121, 121, 121) ; ">
+
+                </div>
+                <div class="col-1" style="border-left: solid 1px rgb(121, 121, 121) ;">
+
+                </div>
+                <div class="col-1" style="border-left: solid 1px rgb(121, 121, 121) ;">
+
+                </div>
+                <div class="col-2" style="border-left: solid 1px rgb(121, 121, 121) ;">
+
+                </div>
+            </div>
+            <div class="row" style="text-align: center;">
+                <div class="col-12" style="border-left: solid 1px rgb(121, 121, 121) ;border-top: solid 1px rgb(121, 121, 121) ; border-bottom: solid 1px rgb(121, 121, 121) ; background-color: gray;">
+                    آشنایی با نرم افزار
+                </div>
+            </div>
+            <div class="row" style="text-align: center; border-bottom: 1px  rgb(121, 121, 121);">
+                <div class="col-3" style="border: solid 1px rgb(121, 121, 121) ; background-color: darkgray;">
+                    عنوان نرم افزار
+                </div>
+                <div class="col-3" style="border: solid 1px rgb(121, 121, 121) ; background-color: darkgray;">
+                    میزان تسلط
+                </div>
+                <div class="col-3" style="border: solid 1px rgb(121, 121, 121) ; background-color: darkgray;">
+                    عنوان نرم افزار
+                </div>
+                <div class="col-3" style="border: solid 1px rgb(121, 121, 121) ; background-color: darkgray;">
+                    میزان تسلط
+                </div>
+            </div>
+            <div class="row" style="text-align: center; border-bottom: 1px  rgb(121, 121, 121);">
+                <div class="col-3" style="border: solid 1px rgb(121, 121, 121) ;">
+                    @ViewBag.data.soft1Name.
+                </div>
+                <div class="col-3" style="border: solid 1px rgb(121, 121, 121) ;">
+                    @ViewBag.data.soft1lvl
+                </div>
+                <div class="col-3" style="border: solid 1px rgb(121, 121, 121) ;">
+                    @ViewBag.data.soft2Name
+                </div>
+                <div class="col-3" style="border: solid 1px rgb(121, 121, 121) ;">
+                    @ViewBag.data.soft2lvl
+                </div>
+            </div>
+            <div class="row" style="text-align: center; border-bottom: 10px  rgb(121, 121, 121);">
+                <div class="col-3" style="border: solid 1px rgb(121, 121, 121) ;">
+                    @ViewBag.data.soft3Name.
+
+                </div>
+                <div class="col-3" style="border: solid 1px rgb(121, 121, 121) ;">
+                    @ViewBag.data.soft3lvl
+                </div>
+                <div class="col-3" style="border: solid 1px rgb(121, 121, 121) ;">
+
+                </div>
+                <div class="col-3" style="border: solid 1px rgb(121, 121, 121) ;">
+
+                </div>
+            </div>
+            <div class="row" style="text-align: center; border-bottom: 1px  rgb(121, 121, 121);">
+                <div class="col-3" style="border: solid 1px rgb(121, 121, 121) ;">
+.
+                </div>
+                <div class="col-3" style="border: solid 1px rgb(121, 121, 121) ;">
+
+                </div>
+                <div class="col-3" style="border: solid 1px rgb(121, 121, 121) ;">
+
+                </div>
+                <div class="col-3" style="border: solid 1px rgb(121, 121, 121) ;">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row bmain" dir="rtl">
+
+        <div class="col-1"
+            style="border-left: solid 1px rgb(121, 121, 121) ;background-color:rgb(121, 121, 121) ; writing-mode: vertical-lr;padding-top:50px;padding-bottom: 50px;text-align: center;padding-left: 30px;">
+            <b style="color:black"> سوابق کاری</b>
+        </div>
+        <div class="col-11" style="text-align: right;">
+
+            <div class="row" style="border-bottom: solid 1px rgb(121, 121, 121) ;">
+                <div class="col-4" style="border-left: solid 1px rgb(121, 121, 121) ;">
+                    نام و نام خانوادگی : <b>@ViewBag.data.FirstName @ViewBag.data.LastName</b>
+                </div>
+                <div class="col-3" style="border-left: solid 1px rgb(121, 121, 121) ;">
+                    نام پدر : <b>@ViewBag.data.FatherName</b>
+                </div>
+                <div class="col-3" style="border-left: solid 1px rgb(121, 121, 121) ;">
+                    شماره ملی : <b>@ViewBag.data.CodeMeli</b>
+                </div>
+                <div class="col-2">
+                    محل صدور: <b>@ViewBag.data.MahaleSodor</b>
+                </div>
+
+            </div>
+            <div class="row" style="border-bottom: solid 1px rgb(121, 121, 121) ;">
+                <div class="col-4" style="border-left: solid 1px rgb(121, 121, 121) ;">
+                    نام و نام خانوادگی : <b>@ViewBag.data.FirstName @ViewBag.data.LastName</b>
+                </div>
+                <div class="col-3" style="border-left: solid 1px rgb(121, 121, 121) ;">
+                    نام پدر : <b>@ViewBag.data.FatherName</b>
+                </div>
+                <div class="col-3" style="border-left: solid 1px rgb(121, 121, 121) ;">
+                    شماره ملی : <b>@ViewBag.data.CodeMeli</b>
+                </div>
+                <div class="col-2">
+                    محل صدور: <b>@ViewBag.data.MahaleSodor</b>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
